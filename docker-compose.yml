@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "8001:8000"
+    networks:
+      - sre
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - sre
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - sre
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
+
+networks:
+  sre:
