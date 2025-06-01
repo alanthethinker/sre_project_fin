@@ -7,4 +7,5 @@ app = FastAPI()
 def add(a: int = Query(...), b: int = Query(...)):
     return {"result": a + b}
 
-Instrumentator().instrument(app).expose(app)
+instrumentator = Instrumentator()
+instrumentator.instrument(app).expose(app)

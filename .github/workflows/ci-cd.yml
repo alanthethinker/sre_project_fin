@@ -26,7 +26,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest tests/ || echo "⚠️ No tests found, skipping"
+        pytest tests/
 
     - name: Build Docker image
       run: |
